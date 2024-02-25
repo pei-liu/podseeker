@@ -27,12 +27,14 @@ TO DO
 The `RssFeedsGetterService` iterates through all RSS feed urls (stored in the `podcasts` table) and fetches the latest raw
 XML for each podcast feed. The data is parsed and saved to the `episodes` table.
 
-Invoke in the rails console with `RssFeedsGetterService.new.run`. You can also invoke with
-`RssFeedsGetterService.new.run(force: true)` to bypass logic that checks if the data has been recently fetched before
-executing a new fetch.
+Invoke with the rake task: `rake rss:fetch_latest_episodes`
+
+Can also pass in 't' to bypass logic that checks if the data has been recently fetched before executing a new fetch: `rake rss:fetch_latest_episodes[t]`
 
 
 ## Data Formatter Service
 The `DataFormatterService` will iterate through yet-to-be-formatted episodes and 1) Strip out HTML elements from the
 XML and save the formatted text to the `episodes.description` column  2) Analyze the description text and and create an
 inverted index (saved to `episodes.searchable`) that powers the search engine functionality.
+
+Invoke with the rake task: `rake data:transform_episode_description`

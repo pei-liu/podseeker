@@ -7,7 +7,14 @@ class RssFeedsGetterService
   end
 
   def run(force: false)
+    puts "Starting RSS Feed refresh..."
+
+    if force
+      puts "`force` arg set to true. Script will bypass staleeness logic and refresh all records."
+    end
+
     Podcast.all.each do |podcast|
+      puts "\nWorking on podcast: '#{podcast.title}'"
       URI.open(podcast.rss_url) do |rss|
         feed = RSS::Parser.parse(rss, validate: false)
         channel = feed.channel
