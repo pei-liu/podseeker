@@ -28,6 +28,20 @@ code {
   }
 }
 
-#empty-state {
+#user-message {
   color: red;
+}
+
+#episode-list-container {
+  .episode-container {
+    margin-bottom: 50px;
+
+    h3 {
+      margin-bottom: -10px;
+    }
+
+    p {
+      margin-bottom: -10px;
+    }
+  }
 }

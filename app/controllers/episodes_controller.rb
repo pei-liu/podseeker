@@ -3,8 +3,11 @@
 class EpisodesController < ApplicationController
   def search
     search_term = params[:q]
-    episodes = Episode.includes(:podcast).search_episode(search_term).limit(50).map do |e|
+    episodes = Episode.includes(:podcast).search_episode(search_term).limit(50)
+
+    episodes = episodes.map do |e|
       pc = e.podcast
+      publish_date = DateTime.parse(e.content_as_json["pubDate"]).strftime('%Y/%m/%d')
       {
         podcast_title: pc.title,
         podcast_image_url: pc.image_url,
@@ -12,7 +15,7 @@ class EpisodesController < ApplicationController
         episode_author: e.author,
         episode_description: e.description,
         episode_url: e.content_as_json["link"],
-        episode_publish_date: e.content_as_json["pubDate"]
+        episode_publish_date: publish_date
       }
     end
 

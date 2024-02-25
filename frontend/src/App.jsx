@@ -4,7 +4,7 @@ import Episode from "./Episode";
 
 const App = (props) => {
   const [searchTerm, setSearchTerm] = useState(props.search_term);
-  const [emptyListMsg, setEmptyListMsg] = useState("Submit a search term to begin. Try 'tech'!");
+  const [userMsg, setUserMsg] = useState("Submit a search term to begin. Try 'tech'!");
   const [episodes, setEpisodes] = useState([]);
 
   const handleSearchTermChange = (e) => {
@@ -15,7 +15,7 @@ const App = (props) => {
     e.preventDefault();
 
     if(searchTerm === undefined) {
-      setEmptyListMsg("Input can't be blank. Submit a search term to begin. Try 'tech'!");
+      setUserMsg("Input can't be blank. Submit a search term to begin. Try 'tech'!");
       return;
     }
 
@@ -28,9 +28,9 @@ const App = (props) => {
       const data = await response.json();
 
       if(data.length === 0) {
-        setEmptyListMsg(`0 results for '${searchTerm}'. Try another search term.`);
+        setUserMsg(`0 results for '${searchTerm}'. Try another search term.`);
       } else {
-        setEmptyListMsg('');
+        setUserMsg('');
       }
 
       setEpisodes(data);
@@ -52,10 +52,10 @@ const App = (props) => {
         <button type="submit">Search</button>
       </form>
       <hr />
-      <p id="empty-state">{emptyListMsg}</p>
+      <p id="user-message">{userMsg}</p>
       <div id="episode-list-container">
         {
-          episodes.map((ep, index) => (
+          episodes.map((ep) => (
             <Episode
               podcast_title={ep.podcast_title}
               podcast_image_url={ep.podcast_image_url}
