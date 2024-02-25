@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Episode from "./Episode";
-// import style from './Home.module.css';
 
 const App = (props) => {
   const [searchTerm, setSearchTerm] = useState(props.search_term);
