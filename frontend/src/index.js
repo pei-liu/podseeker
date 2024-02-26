@@ -7,6 +7,7 @@ import {
 import './index.css';
 import App from './App';
 import HealthCheck from './HealthCheck';
+import Metrics from './Metrics';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/health",
     element: <HealthCheck />
+  },
+  {
+    path: '/metrics',
+    element: <Metrics />
   }
 ]);
 

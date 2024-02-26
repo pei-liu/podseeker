@@ -25,7 +25,7 @@ const HealthCheck = (props) => {
   }, [])
 
   return (
-    <div id='health-check'>
+    <div id='health-check-page'>
       {message}
     </div>
   );
