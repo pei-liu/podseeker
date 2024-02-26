@@ -18,7 +18,7 @@ For v1, we will have a fixed list of the most popular podcasts we fetch data for
 ## Setup
 1. Install gem dependencies: `bundle install`
 2. Setup/migrate/seed db: `rails db:setup`
-3. Run `rake start`
+3. Run `rake start` to start both the Rails API and React frontend. Alternatively, you can run `PORT=3001 bundle exec rails s` and `PORT=3000 yarn --cwd frontend start` in separate terminal windows which is necessary to create debug breakpoints in Rails.
 ## Run Test Suite
 TO DO
 
