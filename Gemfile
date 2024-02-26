@@ -6,6 +6,7 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem "bootsnap", require: false
 gem "rss"
+gem "sidekiq"
 # see https://pganalyze.com/blog/full-text-search-ruby-rails-postgres for more on pg_search
 gem 'pg_search', '~> 2.3', '>= 2.3.2'
 
