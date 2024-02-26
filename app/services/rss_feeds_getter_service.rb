@@ -36,7 +36,7 @@ class RssFeedsGetterService
         description: channel.description,
         last_build_date: channel.lastBuildDate,
         last_fetch_time: Time.now,
-        image_url: channel.image.url
+        image_url: channel.image&.url
       })
 
       insert_new_episodes(feed, podcast)
